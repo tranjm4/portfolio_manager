@@ -4,7 +4,7 @@ File: src/
 import yfinance as yf
 from typing_extensions import TypedDict
 
-from datetime import datetime
+from datetime import datetime, timezone, timedelta
 
 import sys
 import os
@@ -64,8 +64,9 @@ class DataCollector:
         self.store_in_db(db_entry)
         
     def _convert_str_to_datetime(self, datetime_str):
-        """Converts time in milliseconds (str) to %Y-%m-%d %H:%M:%S"""
-        return datetime.fromtimestamp(int(datetime_str)/1000).strftime("%Y-%m-%d %H:%M:%S")
+        """Converts time in milliseconds (str) to %Y-%m-%d %H:%M:%S in PST"""
+        pst = timezone(timedelta(hours=-8))
+        return datetime.fromtimestamp(int(datetime_str)/1000, tz=pst).strftime("%Y-%m-%d %H:%M:%S")
         
     
     def store_in_db(self, entry: PriceEntry) -> None:

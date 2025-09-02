@@ -73,6 +73,6 @@ class TestDataCollector:
         """Tests the helper function that converts a string integer to a datetime"""
         dc = DataCollector()
         time = 1756386138000
-        assert dc._convert_str_to_datetime(str(time)) == "2025-08-28 06:02:18"
-        assert dc._convert_str_to_datetime(str(time + 1000)) == "2025-08-28 06:02:19"
-        assert dc._convert_str_to_datetime(str(time + 60000)) == "2025-08-28 06:03:18"
+        assert dc._convert_str_to_datetime(str(time)) == "2025-08-28 05:02:18"
+        assert dc._convert_str_to_datetime(str(time + 1000)) == "2025-08-28 05:02:19"
+        assert dc._convert_str_to_datetime(str(time + 60000)) == "2025-08-28 05:03:18"
